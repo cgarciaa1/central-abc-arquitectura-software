@@ -1,1 +1,1 @@
-# arquitectura-softawre-agiles
+# arquitectura-software-agiles
