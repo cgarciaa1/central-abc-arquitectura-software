@@ -6,6 +6,14 @@ services:
       - 6379:6379
     volumes: 
       - ./data:/data
+  authentication-service:
+    volumes:
+        - ./signal_publisher/:/mnt/
+    build: ./authentication_service
+    working_dir: /backend/
+    command: sh run_commands.sh
+    depends_on:
+      - redis
   signals-commands:
     volumes:
         - ./signal_publisher/:/mnt/
