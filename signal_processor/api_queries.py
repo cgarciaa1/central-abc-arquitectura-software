@@ -36,7 +36,7 @@ def thread_function(p):
             if message and "data" in message :    
                 logging.warning("Entró mensaje: {}".format(message))
                 
-                json_object = json.loads(message["data"].replace('\'', '"'))
+                json_object = json.loads(str(message["data"]).replace('\'', '"'))
                 if "datos" in json_object:
                     requests += 1
                     hash = hashlib.sha512(str(json_object["datos"] + key).encode("utf-8")).hexdigest()
