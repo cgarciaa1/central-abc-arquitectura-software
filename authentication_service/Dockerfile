@@ -5,4 +5,5 @@ WORKDIR /backend
 ADD requirements.txt /backend/
 RUN pip install -r requirements.txt
 ADD * /backend/
+ADD model/* /backend/model/
 EXPOSE 5000
