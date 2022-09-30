@@ -43,7 +43,7 @@ def thread_function(p):
                     if hash != json_object["hash"]:
                         errors += 1
         except Exception as e: 
-            logging.warning("Error capturado: {}".format(e), exc_info=True))                
+            logging.warning("Error capturado: {}".format(e), exc_info=True)                
         time.sleep(3)
 
 
