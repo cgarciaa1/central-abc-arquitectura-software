@@ -30,17 +30,20 @@ def thread_function(p):
     global key
 
     while True:
-        message = subcription.get_message()
-        logging.warning("Mensaje entrante: {}".format(message))
-        if message and "data" in message :
-            logging.warning("Entró mensaje: {}".format(message))
-            
-            json_object = json.loads(message["data"])
-            if "datos" in json_object:
-                requests += 1
-                hash = hashlib.sha512(str(json_object["datos"] + key).encode("utf-8")).hexdigest()
-                if hash != json_object["hash"]:
-                    errors += 1
+        try:
+            message = subcription.get_message()
+            logging.warning("Mensaje entrante: {}".format(message))
+            if message and "data" in message :    
+                logging.warning("Entró mensaje: {}".format(message))
+                
+                json_object = json.loads(message["data"])
+                if "datos" in json_object:
+                    requests += 1
+                    hash = hashlib.sha512(str(json_object["datos"] + key).encode("utf-8")).hexdigest()
+                    if hash != json_object["hash"]:
+                        errors += 1
+        except Exception as e: 
+            logging.warning("Error capturado: {}".format(e))                
         time.sleep(3)
 
 
