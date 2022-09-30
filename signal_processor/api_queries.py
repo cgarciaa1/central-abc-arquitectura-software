@@ -29,12 +29,14 @@ def thread_function(p):
     global key
 
     while True:
-
-        json_object = json.loads(subcription.get_message())
-        requests += 1
-        hash = hashlib.sha512(str(json_object["datos"] + key).encode("utf-8")).hexdigest()
-        if hash != json_object["hash"]:
-            errors += 1
+        message = subcription.get_message()
+        print("Mensaje entrante: " + message)
+        if message:
+            json_object = json.loads()
+            requests += 1
+            hash = hashlib.sha512(str(json_object["datos"] + key).encode("utf-8")).hexdigest()
+            if hash != json_object["hash"]:
+                errors += 1
         time.sleep(3)
 
 

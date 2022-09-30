@@ -13,7 +13,7 @@ salt = '12345678910'
 for a in range(50):
     value = '20° C'
     hash = hashlib.sha512(value + salt).encode("utf-8")).hexdigest()
-    if a % 10 == 0
+    if a % 10 == 0:
         value = '30° C'
     PARAMS = {'evento' : 'Temperatura', 'datos' : value, 'hash' : hash }
     r = requests.post(url = URL, json = PARAMS)
