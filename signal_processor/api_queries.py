@@ -39,7 +39,7 @@ def thread_function(p):
                 
                 logging.warning("Tipo data: {}".format(type(message["data"])))
                 
-                json_object = json.loads(str(message["data"]))
+                json_object = json.loads(message["data"].decode("ascii").replace("'",'"'))
                 if "datos" in json_object:
                     requests += 1
                     hash = hashlib.sha512(str(json_object["datos"] + key).encode("utf-8")).hexdigest()
