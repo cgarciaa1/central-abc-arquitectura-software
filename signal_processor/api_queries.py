@@ -38,8 +38,8 @@ def thread_function(p):
             json_object = json.loads(message["data"])
             if json_object.has_key("datos"):
                 requests += 1
-                hash = hashlib.sha512(str(message["datos"] + key).encode("utf-8")).hexdigest()
-                if hash != message["hash"]:
+                hash = hashlib.sha512(str(json_object["datos"] + key).encode("utf-8")).hexdigest()
+                if hash != json_object["hash"]:
                     errors += 1
         time.sleep(3)
 
