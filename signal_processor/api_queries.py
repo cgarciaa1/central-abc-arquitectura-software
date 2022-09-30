@@ -34,10 +34,6 @@ def thread_function(p):
             message = subcription.get_message()
             logging.warning("Mensaje entrante: {}".format(message))
             if message and "data" in message :    
-                logging.warning("Entró mensaje: {}".format(message))
-                logging.warning("Tipo message: {}".format(type(message)))
-                
-                logging.warning("Tipo data: {}".format(type(message["data"])))
                 
                 json_object = json.loads(message["data"].decode("utf-8").replace("'",'"'))
                 if "datos" in json_object:
@@ -47,7 +43,7 @@ def thread_function(p):
                         errors += 1
         except Exception as e: 
             logging.warning("Error capturado: {}".format(e), exc_info=True)                
-        time.sleep(3)
+        time.sleep(1)
 
 
 if __name__ == '__main__':

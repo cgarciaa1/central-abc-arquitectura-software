@@ -23,6 +23,7 @@ print("\nTest Auth\n")
 
 URL_Auth = "http://192.168.1.145:5000/api-commands/authenticate"
 
+DATA_ADMIN = {"username":"admin", "password":"supersecret"}
 DATA = {"username":"sensor_1", "password":"sensor1"}
 DATA_BAD = {"username":"sensor_1", "password":"sensor1*"}
 
@@ -36,6 +37,7 @@ assert r.status_code == 200, "El usuario no se puede autenticar"
 print(f"{r.status_code} {r.json()}")
 
 for i in range(3):
+    r = requests.post(URL_Auth, json=DATA_ADMIN)
     r = requests.post(URL_Auth, json=DATA_BAD)
     assert r.status_code != 200, "El usuario no debería poder autenticarse"
     print(f"{r.status_code} {r.json()}")
