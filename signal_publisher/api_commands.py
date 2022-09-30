@@ -6,8 +6,9 @@ class SignalPublisherResource(Resource):
 
     def post(self):
         
-        #name=request.json['evento']
-        r.publish('signal-channel', request.json)
+        #name=
+        message = {'evento' : str(request.json['evento']), 'datos' : str(request.json['datos']), 'hash' : str(request.json['hash']) }
+        r.publish('signal-channel', message)
         return {"status":"Ok", "response": "Mensaje publicado"}, 200
 
 api.add_resource(SignalPublisherResource, '/api-commands/signals')
