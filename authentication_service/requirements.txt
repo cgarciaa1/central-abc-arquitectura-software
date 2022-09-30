@@ -7,3 +7,4 @@ marshmallow-sqlalchemy
 redis
 rq
 requests
+Flask-JWT-Extended
