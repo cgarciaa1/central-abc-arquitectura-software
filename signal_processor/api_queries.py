@@ -32,7 +32,7 @@ def thread_function(p):
     while True:
         message = subcription.get_message()
         logging.warning("Mensaje entrante: {}".format(message))
-        if "datos" in message:
+        if message and "datos" in message :
             #json_object = json.loads(message)
             requests += 1
             hash = hashlib.sha512(str(message["datos"] + key).encode("utf-8")).hexdigest()
