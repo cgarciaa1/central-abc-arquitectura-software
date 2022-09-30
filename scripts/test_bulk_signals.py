@@ -11,10 +11,10 @@ salt = '12345678910'
 
 # sending get request and saving the response as response object 50 times
 for a in range(50):
-    value = '20° C'
+    value = '20 C'
     hash = hashlib.sha512((value + salt).encode("utf-8")).hexdigest()
     if a % 10 == 0:
-        value = '30° C'
+        value = '30 C'
     PARAMS = {'evento' : 'Temperatura', 'datos' : value, 'hash' : hash }
     r = requests.post(url = URL, json = PARAMS)
     print(r)
