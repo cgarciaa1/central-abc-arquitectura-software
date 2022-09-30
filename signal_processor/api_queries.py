@@ -32,7 +32,7 @@ def thread_function(p):
     while True:
         message = subcription.get_message()
         logging.warning("Mensaje entrante: {}".format(message))
-        if message and "data" message :
+        if message and "data" in message :
             logging.warning("Entró mensaje: {}".format(message))
             
             json_object = json.loads(message["data"])
