@@ -3,6 +3,7 @@ import time
 import threading
 import json
 import hashlib
+import logging
 
 key = "12345678910"
 requests= 0
@@ -30,7 +31,7 @@ def thread_function(p):
 
     while True:
         message = subcription.get_message()
-        print("Mensaje entrante: {}".format(message))
+        logging.warning("Mensaje entrante: {}".format(message))
         if message:
             #json_object = json.loads(message)
             requests += 1
